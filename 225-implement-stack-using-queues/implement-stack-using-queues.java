@@ -1,9 +1,9 @@
 class MyStack {
     Deque<Integer> q1;
-    Deque<Integer> q2;
+    // Deque<Integer> q2;
     public MyStack() {
         q1 = new ArrayDeque<>();
-        q2 = new ArrayDeque<>();
+        // q2 = new ArrayDeque<>();
     }
     
     public void push(int x) {
@@ -11,16 +11,21 @@ class MyStack {
         //then copy the elements of q1 in q2
         //then swap the q1 with q2
         //inser done
-        q2.offer(x);
-        // transfer done
-        while(!q1.isEmpty()){
-           int element = q1.poll();
-           q2.offer(element);
+        // q2.offer(x);
+        // // transfer done
+        // while(!q1.isEmpty()){
+        //    int element = q1.poll();
+        //    q2.offer(element);
+        // }
+        // // swap done
+        // Deque<Integer> temp = q1;
+        // q1 = q2;
+        // q2 = temp;
+        q1.offer(x);
+        int n = q1.size()-1;
+        for(int i =1;i<=n;i++){
+            q1.offer(q1.poll());
         }
-        // swap done
-        Deque<Integer> temp = q1;
-        q1 = q2;
-        q2 = temp;
     }
     
     public int pop() {
